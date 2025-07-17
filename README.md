@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/img/logo.svg" alt="Chick Food Logo" width="100"/>
+  <img src="preview.png" alt="Chick Food preview image" />
   <h1>Chick Food </h1>
   <p>
     A modern and responsive landing page for a fictional fried chicken restaurant.
