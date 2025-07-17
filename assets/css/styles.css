@@ -1,0 +1,507 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600&family=Unbounded:wght@700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(30, 100%, 58%);
+  --black-color: hsl(220, 12%, 8%);
+  --white-color: hsl(48, 90%, 90%);
+  --text-color: hsl(220, 8%, 28%);
+  --body-color: hsl(48, 80%, 90%);
+  --shadow-img: drop-shadow(0 16px 24px hsla(0, 0%, 0%, .2));
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Montserrat Alternates", sans-serif;
+  --second-font: "Unbounded", sans-serif;
+  --biggest-font-size: 3rem;
+  --bigger-font-size: 2.5rem;
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --biggest-font-size: 6rem;
+    --bigger-font-size: 4.5rem;
+    --big-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--black-color);
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+h1, h2, h3, h4 {
+  color: var(--title-color);
+  font-weight: var(--font-bold);
+  font-family: var(--second-font);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section {
+  padding-block: 5rem 1rem;
+}
+
+.section-title, 
+.section-subtitle {
+  text-align: center;
+  font-family: var(--second-font);
+}
+
+.section-title {
+  font-size: var(--big-font-size);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  display: block;
+  font-size: var(--h2-font-size);
+  margin-bottom: .25rem;
+}
+
+.main {
+  overflow: hidden;
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--first-color);
+  transition: box-shadow 0.4s;
+  z-index: var(--z-fixed);
+  width: 100%;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  height: var(--header-height);
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.25rem;
+}
+.nav-logo img {
+  width: 1.5rem;;
+}
+.nav-logo span {
+  color: var(--black-color);
+  font-weight: var(--font-semi-bold);
+}
+.nav-toggle,
+.nav-close {
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: inline-flex;
+}
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1150px) {
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100%;
+    background-color: var(--first-color);
+    padding: 8rem 3.5rem 0;
+    box-shadow: -4px 0 16px hsla(0, 0%, 0%, .1);
+    transition: right 0.4s; 
+  }
+}
+
+.nav-list {
+  row-gap: 3.5rem;
+  flex-direction: column;
+  display: flex;
+}
+.nav-link  {
+  color: var(--black-color);
+  font-family: var(--second-font);
+  transition: color 0.4s;
+}
+.nav-link:hover {
+  color: var(--white-color);
+}
+
+.nav-close {
+  right: 1.5rem;
+  top: 1rem;
+  position: absolute;
+}
+.show-menu {
+  right: 0;
+}
+
+/* Show menu */
+
+
+/* Add shadow header */
+.shadow-header {
+  box-shadow: 0 4px 16px hsla(0, 0%, 0%, .1);
+}
+
+/* Active link */
+
+
+.home {
+  background: var(--first-color);
+}
+.home-container {
+  padding-block: 4rem 1rem;
+  row-gap: 3rem;
+}
+.home-data {
+  text-align: center;
+  position: relative;
+}
+.home-title {
+  margin-bottom: 8px;
+  font-size: var(--bigger-font-size);
+}
+.home-title span {
+  color: var(--white-color);
+}
+.home-description {
+  margin-bottom: 32px;
+}
+.home-dam-1,
+.home-dam-2,
+.home-dam-3,
+.home-dam-4,
+.home-dam-5 {
+  position: absolute;
+}
+.home-dam-1 {
+  width: 60px;
+  top: 4.5rem;
+  right: -1.5rem;
+}
+.home-dam-2 {
+  left: -2.5rem;
+  width: 80px;
+  top: -3.5rem;
+}
+.home-images {
+  position: relative;
+  justify-self: center;
+}
+.home-img {
+  filter: var(--shadow-img);
+  width: 280px;
+  margin-top: 2rem;
+}
+.home-dam-3 {
+  width: 60px;
+  top: -2rem;
+  right: -1rem;
+}
+.home-dam-4 {
+    
+  bottom: -1.25rem;
+  width: 60px;
+  right: 0.75rem;
+}
+.home-dam-5 {
+  width: 80px;
+  left: -2.5rem;
+  top: 5rem;
+}
+
+
+
+.button {
+  transition: box-shadow 0.4s;
+  font-weight: var(--font-semi-bold);
+  padding: 16px 32px;
+  color: var(--white-color);
+  background: var(--black-color);
+  display: inline-flex;
+  border-radius: 0.75rem;
+}
+.button:hover {
+  box-shadow: 0 0.5rem 24px hsla(0, 0%, 0%, .2);
+}
+
+/*=============== ABOUT ===============*/
+.about {
+  background-color: var(--first-color);
+}
+.about-container {
+  row-gap: 9rem;
+  padding-bottom: 3rem;
+}
+.about-data {
+  text-align: center;
+}
+.about-description {
+  margin-bottom: 32px;
+}
+.about-images {
+  justify-self: center;
+  position: relative;
+  margin-right: 32px;
+}
+.about-img-1 {
+  position: relative;
+  z-index: 10;
+  width: 280px;
+  filter: var(--shadow-img);
+}
+.about-img-2 {
+  filter: var(--shadow-img);
+  right: -2rem;
+  top: -6.5rem;
+  position: absolute;
+  width: 210px;
+}
+.about-tooltip-1,
+.about-tooltip-2 {
+  border-radius: 0.75rem;
+  position: absolute;
+  display: inline-block;
+  font-weight: var(--font-semi-bold);
+  padding: 0.25rem 1.5rem;
+}
+
+.about-tooltip-1 {
+  left: 0;
+  top: -4rem;
+  background-color: var(--white-color);
+}
+.about-tooltip-2 {
+  z-index: 10;
+  bottom: 48px;
+  background: var(--black-color);
+  color: var(--white-color);
+  right: -3rem;
+}
+
+.about-tooltip-1::after,
+.about-tooltip-2::after {
+  position: absolute;
+  background: red;
+  margin: auto 0;
+  rotate: 45deg;
+  border-radius: 0.25rem;
+  top: 0;
+  content: '';
+  width: 20px;
+  height: 20px;
+} 
+.about-tooltip-1::after {
+  background: var(--white-color);
+  right: -8px;
+}
+.about-tooltip-2::after {
+  left: -8px;
+  background: var(--black-color);
+}
+
+
+/*=============== ORDER ===============*/
+.order .section-title {
+  color: var(--first-color);
+}
+.order-container {
+  padding-block: 1.5rem 3rem;
+}
+.order-card {
+  position: relative;
+  display: grid;
+}
+.order-img-1 {
+  width: 190px;
+  filter: var(--shadow-img);
+}
+.order-img-2 {
+  filter: var(--shadow-img);
+  width: 250px;
+  justify-self: flex-end;
+}
+.order-shape-1,
+.order-shape-2 {
+  background-color: var(--first-color);
+  border-radius: 16px;
+  position: absolute;
+  align-self: center;
+}
+.order-shape-1 {
+  left: -3rem;
+  height: 100px;
+  width: 180px;
+}
+.order-shape-2 {
+  right: -3rem;
+  width: 180px;
+  height: 140px;
+}
+.order-tooltip-1,
+.order-tooltip-2 {
+  position: absolute;
+  border-radius: 1.5rem;
+  padding: 0.75rem 32px 0.75rem 0.75rem;
+  align-self: center;
+  background: var(--first-color);
+  z-index: 5;
+}
+.order-tooltip-1 {
+  right: 0;
+}
+.order-tooltip-2 {
+  left: 0;
+}
+.order-tooltip-1::after,
+.order-tooltip-2::after {
+  content: '';
+  position: absolute;
+  height: 20px;
+  top: 0;
+  width: 20px;
+  bottom: 0;
+  background: var(--first-color);
+  margin: auto 0;
+  border-radius: 0.25rem;
+  rotate: 45deg;
+  z-index: -1;
+}
+.order-tooltip-1::after {
+  left: -8px;
+}
+.order-tooltip-2::after {
+  right: -8px;
+}
+.order-title {
+  color: var(--white-color);
+  font-size: var(--normal-font-size);
+}
+.order-subtitle {
+  margin-bottom: 1.25rem;
+  display: inline-block;
+  font-size: var(--small-font-size);
+}
+.order-price {
+  font-size: var(--h2-font-size);
+}
+.order-button {
+  width: 2rem;
+  cursor: pointer;
+  color: var(--first-color);
+  display: grid;
+  place-items: center;
+  height: 2rem;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  bottom: 0.75rem;
+  right: 12px;
+  background: black;
+  color: var(--first-color);
+  position: absolute;
+}
+
+/*=============== COMBO ===============*/
+
+
+/*=============== CONTACT ===============*/
+
+
+/*=============== FOOTER ===============*/
+
+
+/*=============== SCROLL BAR ===============*/
+
+
+/*=============== SCROLL UP ===============*/
+
+
+/* Show Scroll Up */
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+
+
+/* For medium devices */
+
+
+/* For large devices */
+
+
+/* For 2K resolutions (2048 x 1152, 2048 x 1536) */
