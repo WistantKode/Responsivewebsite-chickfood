@@ -68,7 +68,7 @@ def check_and_set_remote():
     existing_url = get_output(["git", "config", "--get", "remote.origin.url"], check=False)
 
     if existing_url:
-        if existing_url == CORRECT_REPO_URL:
+        if existing_url.strip() == CORRECT_REPO_URL:
             print("Remote 'origin' is correctly configured.")
             return True
         else:
@@ -76,7 +76,16 @@ def check_and_set_remote():
             choice = input(f"Do you want to correct it to {CORRECT_REPO_URL}? [Y/n] : ").lower().strip()
             if choice in ('', 'y', 'yes'):
                 success, _ = execute(["git", "remote", "set-url", "origin", CORRECT_REPO_URL])
-                return success
+                if success:
+                    print(f"Remote URL updated to: {CORRECT_REPO_URL}")
+                    return True
+                else:
+                    print("Failed to update remote URL.")
+                    new_url = input("Please enter the correct repository URL: ").strip()
+                    success, _ = execute(["git", "remote", "set-url", "origin", new_url])
+                    if success:
+                        print(f"Remote URL updated to: {new_url}")
+                        return True
             else:
                 print("Remote URL update cancelled. Push may fail.")
                 return True
